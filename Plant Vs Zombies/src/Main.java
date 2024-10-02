@@ -106,6 +106,12 @@ public class Main {
                     }
                 }
                 break;
+            case "Sort by Name":
+                Collections.sort(plants);
+                for (Plant p : plants){
+                    System.out.println(p);
+                }
+                break;
             case "Sort by HP":
                 plants.sort(new Plant.sortByHp());
                 for (Plant p : plants) {

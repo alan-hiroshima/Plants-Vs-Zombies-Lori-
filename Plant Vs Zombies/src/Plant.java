@@ -18,6 +18,17 @@ public abstract class Plant implements Comparable<Plant> {
         this.hp = 6;
     }
 
+    @Override
+    public String toString() {
+        String s = "";
+        if (hp == 6){
+            s = name + " (" + hp + ") - cost: " + sun_cost;
+        } else {
+            s = name + " (∞) - cost: " + sun_cost;
+        }
+        return s;
+    }
+
     public int compareTo(Plant p) {
         return name.compareTo(p.name);
     }
