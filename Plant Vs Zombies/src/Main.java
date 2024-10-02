@@ -126,7 +126,3 @@ public class Main {
         } while (!input.equals("DONE"));
     }
 }
-
-
-    }
-}

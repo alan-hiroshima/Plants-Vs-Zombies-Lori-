@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public abstract class Plant implements Comparable<Plant> {,
+public abstract class Plant implements Comparable<Plant> {
     public static final int INFINITY = Integer.MAX_VALUE;
     String name;
     int hp;
@@ -37,6 +37,131 @@ public abstract class Plant implements Comparable<Plant> {,
                 return p1.name.compareTo(p2.name);
             }
             return Integer.compare(p2.sun_cost, p1.sun_cost);
+        }
+    }
+
+    // subclasses
+
+    public static class Sunflower extends Plant implements SunProducer{
+        public Sunflower(){
+            super("Sunflower", 50);
+        }
+        @Override
+        public int produce_sun() {
+            return 0;
+        }
+    }
+
+    public static class TwinSunflower extends Plant implements PlantUpgrade{
+        public TwinSunflower(){
+            super("TwinSunflower", 250);
+        }
+
+        @Override
+        public int concurrentSunCost() {
+            return sun_cost+50;
+        }
+    }
+
+    public static class Peashooter extends Plant implements Attacker{
+        public Peashooter(){
+            super("Peashooter", 100);
+        }
+
+        @Override
+        public void attack() {
+
+        }
+
+        @Override
+        public int rangeType() {
+            return 0;
+        }
+    }
+
+    public static class WallNut extends Plant {
+        public WallNut(){
+            super("Wallnut", 25, 50);
+        }
+    }
+
+    public static class Squash extends Plant implements Attacker, InstantKiller{
+        public Squash(){
+            super("Squash", INFINITY, 50);
+        }
+
+        @Override
+        public void attack() {
+
+        }
+
+        @Override
+        public int rangeType() {
+            return 0;
+        }
+
+        @Override
+        public int killType() {
+            return 0;
+        }
+    }
+
+    public static class Jalapeno extends Plant implements Attacker, InstantKiller{
+        public Jalapeno(){
+            super("Jalapeno", INFINITY, 125);
+        }
+
+        @Override
+        public void attack() {
+
+        }
+
+        @Override
+        public int rangeType() {
+            return 0;
+        }
+
+        @Override
+        public int killType() {
+            return 0;
+        }
+    }
+
+    public static class CoffeeBean extends Plant {
+        public CoffeeBean(){
+            super("CoffeeBean", INFINITY, 75);
+        }
+    }
+
+    public static class LilyPad extends Plant implements Upgradable{
+        public LilyPad(){
+            super("LilyPad", 25);
+        }
+
+        @Override
+        public Plant upgrade() {
+            return new Cattail();
+        }
+    }
+
+    public static class Cattail extends Plant implements Attacker, PlantUpgrade{
+        public Cattail(){
+            super("Cattail", 225);
+        }
+
+        @Override
+        public void attack() {
+
+        }
+
+        @Override
+        public int rangeType() {
+            return 0;
+        }
+
+        @Override
+        public int concurrentSunCost() {
+            return sun_cost+25;
         }
     }
 }
