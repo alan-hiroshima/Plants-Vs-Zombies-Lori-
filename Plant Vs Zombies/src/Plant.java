@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public abstract class Plant implements Comparable<Plant>{
+public abstract class Plant implements Comparable<Plant>, Comparator<Plant> {,
     public static final int INFINITY = Integer.MAX_VALUE;
     String name;
     int hp;
@@ -22,8 +22,8 @@ public abstract class Plant implements Comparable<Plant>{
         return name.compareTo(p.name);
     }
 
-    public static class sortByHp{
-        public int compareTo(Plant p1, Plant p2){
+    public static class sortByHp implements Comparator<Plant> {
+        public int compare(Plant p1, Plant p2){
             if (p2.hp == p1.hp){
                 return p1.name.compareTo(p2.name);
             }
@@ -31,8 +31,8 @@ public abstract class Plant implements Comparable<Plant>{
         }
     }
 
-    public static class sortBySunCost{
-        public int compareTo(Plant p1, Plant p2){
+    public static class sortBySunCost implements Comparator<Plant> {
+        public int compare(Plant p1, Plant p2){
             if (p2.sun_cost == p1.sun_cost){
                 return p1.name.compareTo(p2.name);
             }
