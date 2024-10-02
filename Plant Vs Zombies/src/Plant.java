@@ -54,7 +54,7 @@ public abstract class Plant implements Comparable<Plant> {
 
     public static class TwinSunflower extends Plant implements PlantUpgrade{
         public TwinSunflower(){
-            super("TwinSunflower", 250);
+            super("Twin Sunflower", 250);
         }
 
         @Override
@@ -69,19 +69,20 @@ public abstract class Plant implements Comparable<Plant> {
         }
 
         @Override
-        public void attack() {
-
+        public int attack() {
+            System.out.println(name + " attacks");
+            return 1;
         }
 
         @Override
-        public int rangeType() {
-            return 0;
+        public int rangeType() { // single line = 1
+            return 1;
         }
     }
 
     public static class WallNut extends Plant {
         public WallNut(){
-            super("Wallnut", 25, 50);
+            super("Wall Nut", 25, 50);
         }
     }
 
@@ -91,18 +92,19 @@ public abstract class Plant implements Comparable<Plant> {
         }
 
         @Override
-        public void attack() {
-
+        public int attack() {
+            System.out.println(name + " dies while squashing zombies");
+            return 3;
         }
 
         @Override
-        public int rangeType() {
-            return 0;
+        public int rangeType() { // Limited range = 3
+            return 3;
         }
 
         @Override
-        public int killType() {
-            return 0;
+        public int killType() { // on contact = 2
+            return 2;
         }
     }
 
@@ -112,30 +114,31 @@ public abstract class Plant implements Comparable<Plant> {
         }
 
         @Override
-        public void attack() {
-
+        public int attack() {
+            System.out.println(name + " dies while exploding");
+            return 5;
         }
 
         @Override
-        public int rangeType() {
-            return 0;
+        public int rangeType() { // single line = 1
+            return 1;
         }
 
         @Override
-        public int killType() {
-            return 0;
+        public int killType() { // instant = 1
+            return 1;
         }
     }
 
     public static class CoffeeBean extends Plant {
         public CoffeeBean(){
-            super("CoffeeBean", INFINITY, 75);
+            super("Coffee Bean", INFINITY, 75);
         }
     }
 
     public static class LilyPad extends Plant implements Upgradable{
         public LilyPad(){
-            super("LilyPad", 25);
+            super("Lily Pad", 25);
         }
 
         @Override
@@ -150,13 +153,14 @@ public abstract class Plant implements Comparable<Plant> {
         }
 
         @Override
-        public void attack() {
-
+        public int attack() {
+            System.out.println(name + " attacks");;
+            return 1;
         }
 
         @Override
-        public int rangeType() {
-            return 0;
+        public int rangeType() { // free range = 4
+            return 4;
         }
 
         @Override

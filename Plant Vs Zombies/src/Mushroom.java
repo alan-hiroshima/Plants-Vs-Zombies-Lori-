@@ -10,7 +10,7 @@ public class Mushroom extends Plant {
         return true;
     }
 
-    public void awaken(Coffeebean coffeebean){
+    public void awaken(CoffeeBean coffeebean){
 
     }
 
@@ -32,13 +32,17 @@ public class Mushroom extends Plant {
 
 
         @Override
-        public void attack() {
-
+        public int attack() {
+            if (!isAwake()){
+                System.out.println(name + " is asleep and cannot attack");
+            }
+            System.out.println(name + " attacks");
+            return 1;
         }
 
         @Override
-        public int rangeType() {
-            return 0;
+        public int rangeType() { // limited range = 3
+            return 3;
         }
     }
 
@@ -48,18 +52,22 @@ public class Mushroom extends Plant {
         }
 
         @Override
-        public int killType() {
-            return 0;
+        public int killType() { // instant = 1
+            return 1;
         }
 
         @Override
-        public void attack() {
-
+        public int attack() {
+            if (!isAwake()){
+                System.out.println(name + " is asleep and cannot attack");
+            }
+            System.out.println(name + " dies while exploding and leaves a crater");
+            return 10;
         }
 
         @Override
-        public int rangeType() {
-            return 0;
+        public int rangeType() { // AOE = 2
+            return 2;
         }
     }
 }
