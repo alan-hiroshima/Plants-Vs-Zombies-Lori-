@@ -10,6 +10,8 @@ public class Main {
     System.out.println("Game mode:");
     String mode = sc.nextLine();
 
+    // mode: Day, Night, Pool, Fog
+
     String input;
     do{
         System.out.print("Add a plant: ");
