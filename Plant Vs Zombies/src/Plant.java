@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public abstract class Plant implements Comparable<Plant>, Comparator<Plant> {,
+public abstract class Plant implements Comparable<Plant> {,
     public static final int INFINITY = Integer.MAX_VALUE;
     String name;
     int hp;

@@ -27,7 +27,7 @@ public class Main {
                 plants.add(new Plant.WallNut());
                 break;
             case "Sun-shroom":
-                plants.add(new Mushroom.Sunshroom(false));
+                plants.add(new Mushroom.SunShroom(false));
                 break;
             case "Doom-shroom":
                 plants.add(new Mushroom.DoomShroom(false));
@@ -71,7 +71,7 @@ public class Main {
             case "Attacker Status":
                 for (Plant plant : plants) {
                     if (plant instanceof Attacker) {
-                        int rangeType = ((Attacker)p).killType();
+                        int rangeType = ((Attacker)plant).rangeType();
                         switch (rangeType){
                             case 1:
                                 System.out.println(plant.name + "  can attack on a single line");
@@ -93,7 +93,7 @@ public class Main {
             case "Instant Kill Status":
                 for (Plant plant : plants) {
                     if (plant instanceof InstantKiller) {
-                        int killType = ((InstantKiller)p).killType();
+                        int killType = ((InstantKiller)plant).killType();
                         switch (killType){
                             case 1:
                                 System.out.println(plant.name + " can kill instantly");
