@@ -56,6 +56,21 @@ public class Main {
         switch (input) {
             case "DONE":
                 break;
+            case "Produce Sun":
+                int sum = 0, count = 0;
+                for (Plant p : plants) {
+                    if (p instanceof SunProducer) {
+                        count++;
+                        sum += ((SunProducer)p).produce_sun();
+                    }
+
+                }
+                if (count == 0){
+                    System.out.println("You have no sun producers");
+                } else {
+                    System.out.println(+ count + " sun producers gather " + sum + " suns");
+                }
+                break;
             case "Attack":
                 int attackers = 0;
                 int totalDamage = 0;
