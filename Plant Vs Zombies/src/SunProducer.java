@@ -1,17 +1,17 @@
 public interface SunProducer {
-    int produce_sun();
+    public int produce_sun();
     // return no of suns it produce
 }
 
 interface PlantUpgrade{
-    int concurrentSunCost();
+   public int concurrentSunCost();
     // return the sum of og sum and the concurrent sun
 }
 
 interface  Attacker{
-    int attack();
+    public int attack();
         // prints the attack action "name" + attacks, returns damage
-    int rangeType();
+    public int rangeType();
     /*
      * 1 - Single Line
      * 2 - AOE
@@ -22,7 +22,7 @@ interface  Attacker{
 }
 
 interface InstantKiller{
-    int killType();
+    public int killType();
     /*
       1 = Instant
       2 = Close Contact
@@ -30,6 +30,6 @@ interface InstantKiller{
 
 }
 
-interface  Upgradable{
-    Plant upgrade();
+interface Upgradable{
+    public PlantUpgrade upgrade();
 }
