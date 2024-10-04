@@ -1,73 +1,91 @@
-public class Mushroom extends Plant {
+public abstract class Mushroom extends Plant{
     boolean state;
-
     public Mushroom(String name, int sun_cost, boolean state) {
         super(name, sun_cost);
         this.state = state;
     }
 
-    public boolean isAwake(){
-        return true;
+    public boolean isAwake() {
+        // TODO implementation
+        return state;
     }
 
-    public void awaken(CoffeeBean coffeebean){
-
+    public void awaken(CoffeeBean coffeeBean) {
+        // TODO implementation
+        this.state = true;
+        System.out.println(coffeeBean.die());
     }
 
-    public static class SunShroom extends Mushroom implements SunProducer{
+    // an example given for free
+    public static class SunShroom extends Mushroom implements SunProducer {
+
         public SunShroom(boolean state) {
             super("Sun-shroom", 25, state);
         }
 
         @Override
         public int produce_sun() {
-            return 10;
+            if (isAwake()) {
+                System.out.println(name + " produces 10 suns");
+                return 10;
+            }
+            System.out.println(name + " is asleep and cannot produce sun");
+            return 0;
         }
     }
 
-    public static class PuffShroom extends Mushroom implements Attacker{
-        public PuffShroom(boolean state){
+    // Add more mushroom subclasses here
+    public static class PuffShroom extends Mushroom implements Attacker {
+
+        public PuffShroom(boolean state) {
             super("Puff-shroom", 0, state);
         }
 
-
         @Override
-        public int attack() {
-            if (!isAwake()){
+        public int attack(){
+            if(isAwake()){
+                System.out.println(name + " attacks");
+                return 1;
+            }else{
                 System.out.println(name + " is asleep and cannot attack");
+                return 0;
             }
-            System.out.println(name + " attacks");
-            return 1;
         }
-
-        @Override
-        public int rangeType() { // limited range = 3
-            return 3;
+        
+        public int rangeType(){
+            return 3; // limited range
         }
     }
+    
+    public static class DoomShroom extends Mushroom implements InstantKiller, Attacker {
 
-    public static class DoomShroom extends Mushroom implements Attacker, InstantKiller{
-        public DoomShroom(boolean state){
+        public DoomShroom(boolean state) {
             super("Doom-shroom", 125, state);
         }
 
         @Override
-        public int killType() { // instant = 1
+        public int attack(){
+            if(isAwake()){
+                System.out.println(name + " attacks"); 
+                System.out.println(die());
+                return 10;
+            }else{
+                System.out.println(name + " is asleep and cannot attack");
+                return 0;
+            }
+        }
+        
+        public int rangeType(){
+            return 2;
+        }
+        
+        public int killType(){
             return 1;
         }
-
+        
         @Override
-        public int attack() {
-            if (!isAwake()){
-                System.out.println(name + " is asleep and cannot attack");
-            }
-            System.out.println(name + " dies while exploding and leaves a crater");
-            return 10;
-        }
-
-        @Override
-        public int rangeType() { // AOE = 2
-            return 2;
+        public String die(){
+            return super.die() + " while exploding and leaves a crater";
         }
     }
 }
